@@ -20,7 +20,7 @@
 
   Nothing here knows about a specific site, DID authority, store endpoint,
   or LLM — that wiring stays with the consuming actor."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ───────────────────────── vocabulary ─────────────────────────
 
@@ -57,7 +57,7 @@
   hash-derived x<hex> slug."
   [s]
   (let [base (-> (str s)
-                 str/lower-case
+                 str/lower
                  (str/replace #"[^a-z0-9]+" "-")
                  (str/replace #"(^-|-$)" ""))]
     (if (seq base)
